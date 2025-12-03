@@ -1,41 +1,42 @@
 <div class="login-container">
   <div class="login-card">
     <div class="login-header">
-      <h2 class="color-primary">Travel Expenses</h2>
-      <p class="texto-normal">Iniciar sesión</p>
+      <div class="logo">
+        <img src="assets/images/logo_viatix.png" alt="Viatix" style="width: 100px;">
+        <h2 class="color-primary">Travel Expenses</h2>
+      </div>
     </div>
     
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
       <div class="form-group marg-bot15">
-        <label for="username" class="texto-normal">Usuario</label>
+        <label for="email" class="texto-normal">Email</label>
         <input 
           type="text" 
-          id="username" 
+          id="email" 
           class="form-control" 
-          formControlName="username"
+          formControlName="email"
           placeholder="Ingrese su usuario">
-        <div *ngIf="submitted && f['username'].errors" class="invalid-feedback">
-          <div *ngIf="f['username'].errors['required']">El usuario es requerido</div>
+        <div *ngIf="submitted && form['email'].errors" class="invalid-feedback">
+          <div *ngIf="form['email'].errors['required']">El usuario es requerido</div>
         </div>
       </div>
       
       <div class="form-group marg-bot15">
-        <label for="password" class="texto-normal">Contraseña</label>
+        <label for="password" class="texto-normal">Password</label>
         <input 
           type="password" 
           id="password" 
           class="form-control" 
           formControlName="password"
           placeholder="Ingrese su contraseña">
-        <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-          <div *ngIf="f['password'].errors['required']">La contraseña es requerida</div>
+        <div *ngIf="submitted && form['password'].errors" class="invalid-feedback">
+          <div *ngIf="form['password'].errors['required']">La contraseña es requerida</div>
         </div>
       </div>
       
       <div class="form-group marg-top25">
-        <button type="submit" class="btn btn-primary btn-block" [disabled]="loading">
-          <span *ngIf="!loading">Iniciar sesión</span>
-          <span *ngIf="loading">Cargando...</span>
+        <button type="submit" class="login-button" [disabled]="loading">
+          {{ loading ? 'Cargando...' : 'Iniciar sesión' }}
         </button>
       </div>
       
