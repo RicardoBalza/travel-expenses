@@ -1,0 +1,135 @@
+<div class="lists-container">
+  <div class="lists-header">
+    <h1 class="color-fifth">Vista de Listas</h1>
+    <p class="texto-normal">Gestión de Rendiciones y Anticipos</p>
+  </div>
+
+  <!-- Navegación por Secciones -->
+  <div class="section-tabs">
+    <div class="tabs-container">
+      <button 
+        *ngFor="let section of sections" 
+        class="tab-button"
+        [class.active]="selectedSection === section.id"
+        (click)="selectSection(section.id)">
+        <i class="icon {{ section.id }}-icon"></i>
+        <span>{{ section.name }}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Contenido Principal -->
+  <div class="lists-content">
+    <!-- Lista de Rendiciones -->
+    <div *ngIf="selectedSection === 'renditions'" class="content-card">
+      <div class="card-header">
+        <h3 class="color-primary">Lista de Rendiciones</h3>
+        <div class="header-actions">
+          <button class="btn btn-primary">
+            <i class="icon add-icon"></i>
+            Nueva Rendición
+          </button>
+        </div>
+      </div>
+      
+      <div class="items-list">
+        <div class="item-card" *ngFor="let rendition of renditions">
+          <div class="item-content">
+            <div class="concept-header">
+              <span class="concept-title">{{ rendition.concept }}</span>
+              <div class="item-actions">
+                <button class="btn btn-sm btn-primary" (click)="goToDetail(rendition.id)">
+                  <i class="icon eye-icon"></i>
+                  Ver Detalle
+                </button>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-group">
+                <span class="item-label">Fecha:</span>
+                <span class="item-value date-text">{{ rendition.date }}</span>
+              </div>
+              <div class="item-group">
+                <span class="item-label">Número:</span>
+                <span class="item-value number-text">{{ rendition.number }}</span>
+              </div>
+            </div>
+            <div class="item-row-full">
+              <div class="item-group">
+                <span class="item-label">Período del:</span>
+                <span class="item-value period-text">{{ rendition.period }}</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-group">
+                <span class="item-label">Importe $:</span>
+                <span class="item-value amount-text">${{ rendition.amount.toFixed(2) }}</span>
+              </div>
+              <div class="item-group">
+                <span class="item-label">Estado:</span>
+                <span class="badge" [ngClass]="rendition.statusClass">{{ rendition.status }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de Anticipos -->
+    <div *ngIf="selectedSection === 'advances'" class="content-card">
+      <div class="card-header">
+        <h3 class="color-primary">Lista de Anticipos</h3>
+        <div class="header-actions">
+          <button class="btn btn-primary">
+            <i class="icon add-icon"></i>
+            Nuevo Anticipo
+          </button>
+        </div>
+      </div>
+      
+      <div class="items-list">
+        <div class="item-card" *ngFor="let advance of advances">
+          <div class="item-content">
+            <div class="concept-header">
+              <span class="concept-title">{{ advance.concept }}</span>
+              <div class="item-actions">
+                <button class="btn btn-sm btn-primary" (click)="goToDetail(advance.id)">
+                  <i class="icon eye-icon"></i>
+                  Ver Detalle
+                </button>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-group">
+                <span class="item-label">Fecha:</span>
+                <span class="item-value date-text">{{ advance.date }}</span>
+              </div>
+              <div class="item-group">
+                <span class="item-label">Número:</span>
+                <span class="item-value number-text">{{ advance.number }}</span>
+              </div>
+            </div>
+            <div class="item-row-full">
+              <div class="item-group">
+                <span class="item-label">Período:</span>
+                <span class="item-value period-text">{{ advance.period }}</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-group">
+                <span class="item-label">Importe:</span>
+                <span class="item-value amount-text">${{ advance.amount.toFixed(2) }}</span>
+              </div>
+            </div>
+            <div class="item-row">
+              <div class="item-group">
+                <span class="item-label">Estado:</span>
+                <span class="badge" [ngClass]="advance.statusClass">{{ advance.status }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

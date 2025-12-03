@@ -315,7 +315,7 @@
     transform: translateX(-100%);
   }
   
-  .sidebar.open {
+  .sidebar:not(.collapsed) {
     transform: translateX(0);
   }
   

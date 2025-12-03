@@ -1,8 +1,13 @@
 <div class="dashboard-layout">
-  <app-sidebar [class.collapsed]="sidebarCollapsed"></app-sidebar>
+  <app-sidebar [collapsed]="sidebarCollapsed"></app-sidebar>
+  
+  <!-- Overlay para móviles -->
+  <div class="sidebar-overlay" 
+       [class.active]="isSidebarOpen()"
+       (click)="closeSidebar()"></div>
   
   <div class="main-content" [class.sidebar-collapsed]="sidebarCollapsed">
-    <app-topbar (sidebarToggle)="toggleSidebar()"></app-topbar>
+    <app-topbar [sidebarCollapsed]="sidebarCollapsed" (sidebarToggle)="toggleSidebar()"></app-topbar>
     
     <div class="content-area">
       <router-outlet></router-outlet>
