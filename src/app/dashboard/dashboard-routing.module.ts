@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
+import { ListsViewComponent } from './lists-view/lists-view.component';
 
 const routes: Routes = [
   { 
@@ -10,6 +11,10 @@ const routes: Routes = [
       { 
         path: '', 
         loadComponent: () => import('./dashboard-main/dashboard-main.component').then(c => c.DashboardMainComponent)
+      },
+      { 
+        path: 'lists', 
+        component: ListsViewComponent
       }
     ]
   }

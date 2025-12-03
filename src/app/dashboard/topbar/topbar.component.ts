@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
   styleUrl: './topbar.component.css'
 })
 export class TopbarComponent {
+  @Input() sidebarCollapsed: boolean = false;
   userMenuOpen = false;
   @Output() sidebarToggle = new EventEmitter<void>();
 
