@@ -1,0 +1,116 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1 class="color-fifth">Panel de Control</h1>
+    <p class="texto-normal">Resumen de gastos de viaje</p>
+  </div>
+
+  <div class="dashboard-cards">
+    <div class="dashboard-card-container">
+      <div class="dashboard-card-header">
+        <span>Total de Gastos</span>
+      </div>
+      <div class="dashboard-card-body d-flex">
+        <div class="icon-container growth"></div>
+        <div class="data-container">
+          <div class="amount">$12,450.00</div>
+          <div class="imp">Total acumulado este mes</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-card-container">
+      <div class="dashboard-card-header">
+        <span>Viajes Realizados</span>
+      </div>
+      <div class="dashboard-card-body d-flex">
+        <div class="icon-container speedometer"></div>
+        <div class="data-container">
+          <div class="block">
+            <div class="large">24</div>
+            <div class="medium">Viajes este mes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-card-container">
+      <div class="dashboard-card-header">
+        <span>Pendientes por Aprobar</span>
+      </div>
+      <div class="dashboard-card-body d-flex">
+        <div class="icon-container check-list"></div>
+        <div class="data-container">
+          <div class="block">
+            <div class="medium-lg">8</div>
+            <div class="small">En revisión</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-card-container">
+      <div class="dashboard-card-header">
+        <span>Ahorro Estimado</span>
+      </div>
+      <div class="dashboard-card-body d-flex">
+        <div class="icon-container dollar-coin"></div>
+        <div class="data-container">
+          <div class="block">
+            <div class="medium-md">$3,200</div>
+            <div class="small">vs. presupuesto</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dashboard-content">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="content-card">
+          <h3 class="color-primary">Gastos Recientes</h3>
+          <div class="consultTable">
+            <div class="_header">
+              <div class="row">
+                <div class="col-md-2">Fecha</div>
+                <div class="col-md-3">Concepto</div>
+                <div class="col-md-2">Categoría</div>
+                <div class="col-md-2">Monto</div>
+                <div class="col-md-3">Estado</div>
+              </div>
+            </div>
+            <div class="_body">
+              <div class="_row" *ngFor="let expense of recentExpenses">
+                <div class="row">
+                  <div class="col-md-2">{{ expense.date }}</div>
+                  <div class="col-md-3">{{ expense.concept }}</div>
+                  <div class="col-md-2">{{ expense.category }}</div>
+                  <div class="col-md-2">${{ expense.amount }}</div>
+                  <div class="col-md-3">
+                    <span class="badge" [ngClass]="expense.statusClass">{{ expense.status }}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="content-card">
+          <h3 class="color-primary">Resumen por Categoría</h3>
+          <div class="category-summary">
+            <div class="category-item" *ngFor="let category of categorySummary">
+              <div class="category-info">
+                <span class="category-name">{{ category.name }}</span>
+                <span class="category-amount">${{ category.amount }}</span>
+              </div>
+              <div class="progress">
+                <div class="progress-bar" [style.width.%]="category.percentage"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

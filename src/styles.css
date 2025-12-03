@@ -1,0 +1,377 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Muli');
+
+.initial_loading {
+    opacity: 0;
+    position: fixed;
+    width: 100%;
+    background: white;
+    padding-top: 25vh;
+    text-align: center;
+    z-index: -1;
+    transition: opacity .8s ease-out;
+}
+
+app-root:empty + .initial_loading {
+  opacity: 1;
+  z-index: 100;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+  font-size: 1rem;
+}
+
+*:focus {
+  outline: none;
+}
+
+a {
+  color: #333333;
+}
+
+a:hover {
+    color: #333333;
+  text-decoration: none;
+}
+
+p {
+  margin: 0;
+}
+
+.texto-normal {
+  font-size: 14px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.sm-text {
+  font-size: 14px;
+}
+
+.sml-text {
+  font-size: 16px;
+}
+
+.md-text {
+  font-size: 20px;
+}
+
+.mdl-text {
+  font-size: 22px;
+}
+
+.xs-text {
+  font-size: 12px;
+}
+
+.lg-text {
+  font-size: 45px;
+}
+
+.lineh-1rem {
+  line-height: 1rem;
+}
+
+.lineh-1v5rem {
+  line-height: 1.5rem;
+}
+
+.lineh-22 {
+  line-height: 22px;
+}
+
+.font09 {
+  font-size: 0.9rem;
+}
+
+.marg-top25 {
+  margin-top: 25px;
+}
+
+.marg-top5 {
+  margin-top: 5px;
+}
+
+.marg-bot10 {
+  margin-bottom: 10px;
+}
+
+.marg-top15 {
+  margin-top: 15px;
+}
+
+.marg-top10 {
+  margin-top: 10px;
+}
+
+.marg-top40 {
+  margin-top: 40px;
+}
+
+.marg-top35 {
+  margin-top: 35px;
+}
+
+.marg-top30 {
+  margin-top: 30px;
+}
+
+.marg-bot30 {
+  margin-bottom: 30px;
+}
+
+.marg-bot15 {
+  margin-bottom: 15px;
+}
+
+.pad-bot30 {
+  padding-bottom: 30px;
+}
+
+.pad-bot15 {
+  padding-bottom: 15px;
+}
+
+.pad-top15 {
+  padding-top: 15px;
+}
+
+.pad-15 {
+  padding: 15px !important;
+}
+
+.border-r {
+  border-right: 1px solid #E8EbEE;
+}
+
+.border-t {
+  border-top: 1px solid #E8EbEE;
+}
+
+.btn {
+  height: 35px;
+  border-radius: 2px;
+}
+
+.btn:focus, .btn.focus {
+  box-shadow: none !important;
+}
+
+.btn.tooltip-btn {
+  background-color: #FFFFFF;
+  color: #3A6BB5;
+}
+
+.btn.tooltip-btn.cancel {
+  color: #E95B14;
+}
+
+.color-primary {
+  color: #3A6BB5;
+}
+
+.color-fifth {
+  color: #0d3151;
+}
+
+.btn-outline-primary:not(:disabled):not(.disabled):active:focus, .btn-outline-primary:not(:disabled):not(.disabled).active:focus, .show > .btn-outline-primary.dropdown-toggle:focus {
+  box-shadow: none;
+}
+
+textarea.form-control.form-control.input-no-border {
+  height: auto;
+}
+
+select.form-control.form-control.input-no-border {
+  height: 35px;
+}
+
+.form-control.input-no-border {
+  height: 35px;
+  padding: 4px 10px;
+  border: 1px solid rgba(0,0,0,.2);
+  background-color: #FFF;
+  box-shadow: inset 0px 0px 2px 1px rgba(242,242,240,1);
+  color: #56646f;
+}
+
+.form-control.input-no-border:focus {
+  border: 1px solid #808080;
+  box-shadow: inset 0px 0px 2px 1px rgba(242,242,240,1);
+}
+
+.form-control.input-no-border:disabled {
+  background-color: #f2f2f0;
+}
+
+.icon-property, .btn-rotate i, .btn-magnify i, .btn-move-left i, .btn-move-right i {
+  transition: all 300ms cubic-bezier(0.34, 1.61, 0.7, 1);
+  position: relative;
+  display: inline-block;
+}
+
+.btn-rotate:hover i, .btn-rotate:focus i {
+  filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=2);
+  transform: rotate(53deg);
+}
+
+.btn-magnify:hover i, .btn-magnify:focus i {
+  transform: scale(1.22);
+}
+
+.consultTable {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.consultTable::-webkit-scrollbar {
+  height: 10px;
+  background-color: transparent;
+}
+
+.consultTable::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.consultTable::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #9DACB9;
+}
+
+.consultTable ._header {
+  font-size: 0.9rem;
+  min-width: 1160px;
+  margin: 0;
+  padding: 0 0 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.consultTable ._body ._row {
+  margin: 0;
+  padding: 3px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);;
+  line-height: 28px;
+}
+
+.consultTable ._body ._row:hover {
+  background-color: #f5f5f5;
+}
+
+.consultTable .consultTable-content {
+  min-width: 1160px;
+}
+
+.form-control {
+  background-color: #F3F2EE;
+  border: 1px solid #e8e7e3;
+  border-radius: 2px;
+  color: #3A6BB5;
+  font-size: 14px;
+  padding: 7px 18px;
+  height: 40px;
+  box-shadow: none;
+  transition: 0.5s;
+}
+
+.invalid-feedback {
+  display: block;
+}
+
+.form-control:focus {
+  border: 1px solid #e8e7e3;
+  background-color: #FFFFFF;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: 0 !important;
+  transition: 0.5s;
+}
+
+.form-control::-moz-placeholder {
+  color: #cfcfca;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.form-control:-moz-placeholder {
+  color: #cfcfca;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.form-control::-webkit-input-placeholder {
+  color: #cfcfca;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.form-control:-ms-input-placeholder {
+  color: #cfcfca;
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+.dashboard-card-container .dashboard-card-header {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #dfdfdf;
+}
+
+.dashboard-card-container .dashboard-card-header span {
+  color: #56646f;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.dashboard-card-container .dashboard-card-body {
+  padding-top: 15px;
+}
+
+.dashboard-card-container .dashboard-card-body .icon-container {
+  width: 22%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.dashboard-card-container .dashboard-card-body .data-container {
+  color: #56646f;
+  width: 78%;
+  height: 110px;
+}
+
+.dashboard-card-container .dashboard-card-body .data-container .amount {
+  color: #0d3151;
+  font-size: 22px;
+  line-height: 1.5rem;
+}
+
+.dashboard-card-container .dashboard-card-body .data-container .imp {
+  font-size: 16px;
+}
+
+.dashboard-card-container .dashboard-card-body .data-container .block .large {
+  color: #0d3151;
+  font-size: 24px;
+}
+
+.dashboard-card-container .dashboard-card-body .data-container .block .medium {
+  font-size: 16px;
+}
+
+.dashboard-card-container .dashboard-card-body .data-container .block .medium-lg {
+  font-size: 22px;
+}
+
+.dashboard-card-container .dashboard-card-body .data-container .block .medium-md {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.dashboard-card-container .dashboard-card-body .data-container .block .small {
+  font-size: 14px;
+}

@@ -1,0 +1,52 @@
+<header class="topbar">
+  <div class="topbar-left">
+    <button class="menu-toggle" (click)="toggleSidebar()">
+      <i class="menu-icon"></i>
+    </button>
+    <div class="breadcrumb">
+      <span class="breadcrumb-item">Inicio</span>
+      <span class="breadcrumb-separator">/</span>
+      <span class="breadcrumb-item active">Panel de Control</span>
+    </div>
+  </div>
+  
+  <div class="topbar-right">
+    <div class="search-box">
+      <input type="text" placeholder="Buscar..." class="search-input">
+      <i class="search-icon"></i>
+    </div>
+    
+    <div class="notifications">
+      <button class="notification-btn">
+        <i class="notification-icon"></i>
+        <span class="notification-badge">3</span>
+      </button>
+    </div>
+    
+    <div class="user-menu">
+      <button class="user-menu-btn" (click)="toggleUserMenu()">
+        <div class="user-avatar-small">
+          <span>JD</span>
+        </div>
+        <span class="user-name">Juan Díaz</span>
+        <i class="dropdown-arrow"></i>
+      </button>
+      
+      <div class="user-dropdown" [class.show]="userMenuOpen">
+        <a href="#" class="dropdown-item">
+          <i class="profile-icon"></i>
+          Mi Perfil
+        </a>
+        <a href="#" class="dropdown-item">
+          <i class="settings-icon"></i>
+          Configuración
+        </a>
+        <div class="dropdown-divider"></div>
+        <a href="#" class="dropdown-item" (click)="logout()">
+          <i class="logout-icon"></i>
+          Cerrar Sesión
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

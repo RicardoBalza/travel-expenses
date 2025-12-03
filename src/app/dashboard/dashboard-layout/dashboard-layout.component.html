@@ -1,0 +1,11 @@
+<div class="dashboard-layout">
+  <app-sidebar></app-sidebar>
+  
+  <div class="main-content" [class.sidebar-collapsed]="sidebarCollapsed">
+    <app-topbar (sidebarToggle)="toggleSidebar()"></app-topbar>
+    
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
