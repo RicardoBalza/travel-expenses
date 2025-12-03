@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent {
+  activeSubmenu: string | null = null;
 
+  toggleSubmenu(event: Event, submenu: string): void {
+    event.preventDefault();
+    this.activeSubmenu = this.activeSubmenu === submenu ? null : submenu;
+  }
+
+  openWishlist(): void {
+    // TODO: Implement wishlist modal functionality
+    console.log('Abriendo Caja de Deseos...');
+  }
 }

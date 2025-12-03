@@ -1,7 +1,7 @@
 <nav class="sidebar">
   <div class="sidebar-header">
     <div class="logo">
-      <h3 class="color-primary">Travel Expenses</h3>
+      <img src="assets/images/logo_viatix.png" alt="Viatix" style="width: 100px;">
     </div>
   </div>
   
@@ -14,33 +14,99 @@
     </li>
     <li class="menu-item">
       <a href="#" class="menu-link">
-        <i class="icon expenses-icon"></i>
-        <span>Gastos</span>
+        <i class="icon inbox-icon"></i>
+        <span>Bandeja de Entrada</span>
       </a>
     </li>
-    <li class="menu-item">
-      <a href="#" class="menu-link">
-        <i class="icon trips-icon"></i>
-        <span>Viajes</span>
-      </a>
-    </li>
-    <li class="menu-item">
-      <a href="#" class="menu-link">
-        <i class="icon reports-icon"></i>
-        <span>Reportes</span>
-      </a>
-    </li>
-    <li class="menu-item">
-      <a href="#" class="menu-link">
+    <li class="menu-item has-submenu">
+      <a href="#" class="menu-link" (click)="toggleSubmenu($event, 'approvals')">
         <i class="icon approvals-icon"></i>
         <span>Aprobaciones</span>
+        <i class="icon arrow-icon"></i>
       </a>
+      <ul class="submenu" [class.active]="activeSubmenu === 'approvals'">
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon request-icon"></i>
+            <span>Solicitudes de Viáticos</span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon approve-icon"></i>
+            <span>Realizar Aprobaciones</span>
+          </a>
+        </li>
+      </ul>
     </li>
     <li class="menu-item">
       <a href="#" class="menu-link">
+        <i class="icon reconciliation-icon"></i>
+        <span>Conciliación Bancaria</span>
+      </a>
+    </li>
+    <li class="menu-item has-submenu">
+      <a href="#" class="menu-link" (click)="toggleSubmenu($event, 'settings')">
         <i class="icon settings-icon"></i>
         <span>Configuración</span>
+        <i class="icon arrow-icon"></i>
       </a>
+      <ul class="submenu" [class.active]="activeSubmenu === 'settings'">
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon profiles-icon"></i>
+            <span>Perfiles de Viáticos</span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon categories-icon"></i>
+            <span>Categorías de Viáticos</span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon expense-config-icon"></i>
+            <span>Configuración de Viáticos</span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon countries-icon"></i>
+            <span>Gestión de Países/Divisas</span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon users-icon"></i>
+            <span>Gestión de Usuarios</span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon user-profiles-icon"></i>
+            <span>Perfiles de Usuarios</span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon tags-icon"></i>
+            <span>Categorías/Etiquetas</span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon advances-icon"></i>
+            <span>Anticipos</span>
+          </a>
+        </li>
+        <li class="submenu-item">
+          <a href="#" class="submenu-link">
+            <i class="icon documents-icon"></i>
+            <span>Recepción de Documentos</span>
+          </a>
+        </li>
+      </ul>
     </li>
   </ul>
   
@@ -54,5 +120,9 @@
         <div class="user-role">Administrador</div>
       </div>
     </div>
+    <button class="wishlist-btn" (click)="openWishlist()">
+      <i class="icon wishlist-icon"></i>
+      <span>Caja de Deseos</span>
+    </button>
   </div>
 </nav>

@@ -1,5 +1,5 @@
 <div class="dashboard-layout">
-  <app-sidebar></app-sidebar>
+  <app-sidebar [class.collapsed]="sidebarCollapsed"></app-sidebar>
   
   <div class="main-content" [class.sidebar-collapsed]="sidebarCollapsed">
     <app-topbar (sidebarToggle)="toggleSidebar()"></app-topbar>
