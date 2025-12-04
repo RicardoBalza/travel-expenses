@@ -113,11 +113,11 @@
   <div class="sidebar-footer">
     <div class="user-info">
       <div class="user-avatar">
-        <span>JD</span>
+        <span>{{acronym}}</span>
       </div>
       <div class="user-details">
-        <div class="user-name">Juan Díaz</div>
-        <div class="user-role">Administrador</div>
+        <div class="user-name">{{user.fullName}}</div>
+        <div class="user-role">{{user.licenseType}}</div>
       </div>
     </div>
     <button class="wishlist-btn" (click)="openWishlist()">
