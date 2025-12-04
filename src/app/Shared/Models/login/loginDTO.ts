@@ -12,10 +12,10 @@ export class AuthUser {
   phoneNumber!: string;
   roleId!: number;
   isActive!: boolean;
-  advanceBalanceAvailable!: string;      // "500.00"
+  advanceBalanceAvailable!: string;      
   hasPendingAdvanceLiquidation!: boolean;
   licenseType!: string;
-  createdAt!: string;                    // o Date si luego lo parseas
+  createdAt!: string;                  
   updatedAt!: string;
 }
 

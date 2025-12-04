@@ -26,9 +26,9 @@
     <div class="user-menu">
       <button class="user-menu-btn" (click)="toggleUserMenu()">
         <div class="user-avatar-small">
-          <span>JD</span>
+          <span>{{acronym}}</span>
         </div>
-        <span class="user-name">Juan Díaz</span>
+        <span class="user-name">{{user.fullName}}</span>
         <i class="dropdown-arrow"></i>
       </button>
       

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { UserResponse } from "../Shared/Models/login/loginDTO";
+import { Observable, BehaviorSubject} from 'rxjs';
+import { UserResponse } from "../Shared/Models/Login/loginDTO";
 
 export interface User {
   id: number;
@@ -16,6 +16,13 @@ export class UserService {
   private apiUrl = 'http://localhost:3000/api/v1';
 
   constructor(private http: HttpClient) { }
+
+  private currentUser = new BehaviorSubject<UserResponse>(new UserResponse());
+  dataBridge$ = this.currentUser.asObservable();
+
+  setDataBridge(data: UserResponse) {
+    this.currentUser.next(data);
+  }
 
   /**
    * Obtiene un usuario por su ID

@@ -15,9 +15,9 @@
           id="email" 
           class="form-control" 
           formControlName="email"
-          placeholder="Ingrese su usuario">
+          placeholder="Ingrese su email">
         <div *ngIf="submitted && form['email'].errors" class="invalid-feedback">
-          <div *ngIf="form['email'].errors['required']">El usuario es requerido</div>
+          <div *ngIf="form['email'].errors['required']">El email es requerido</div>
         </div>
       </div>
       
@@ -30,7 +30,7 @@
           formControlName="password"
           placeholder="Ingrese su contraseña">
         <div *ngIf="submitted && form['password'].errors" class="invalid-feedback">
-          <div *ngIf="form['password'].errors['required']">La contraseña es requerida</div>
+          <div *ngIf="form['password'].errors['required']">El password es requerido</div>
         </div>
       </div>
       

@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
-import { UserResponse } from "../../Shared/Models/login/loginDTO";
+import { UserResponse } from "../../Shared/Models/Login/loginDTO";
 
 
 @Component({
@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
+  
+  userData: UserResponse = new UserResponse();
 
   ngOnInit(): void {}
 
@@ -47,6 +49,10 @@ export class LoginComponent implements OnInit {
 
   }
 
+  setDataShare() {
+    this.userService.setDataBridge(this.userData);
+  }
+
   login() {
     this.loading = true;
     this.error = '';
@@ -60,6 +66,7 @@ export class LoginComponent implements OnInit {
           // Guardar el token en el almacenamiento local
           if (response.token) {
             localStorage.setItem('authToken', response.token);
+            localStorage.setItem('authUser', JSON.stringify(response.user));
           }
           this.router.navigate(['/dashboard']);
         } else {
