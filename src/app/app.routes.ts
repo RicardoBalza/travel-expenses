@@ -11,15 +11,15 @@ export const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
   },
   {
-    path: 'dashboard',
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    path: 'app',
+    loadChildren: () => import('./pages/pages.module').then(m => m.AppModule)
   },
   { 
     path: '', 
     loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)
   },
-  {
+  /* {
     path: '**',
     redirectTo: ''
-  },
+  } */
 ];

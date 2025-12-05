@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
             localStorage.setItem('authToken', response.token);
             localStorage.setItem('authUser', JSON.stringify(response.user));
           }
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/app/dashboard']);
         } else {
           this.error = 'Usuario inactivo o no autorizado';
         }

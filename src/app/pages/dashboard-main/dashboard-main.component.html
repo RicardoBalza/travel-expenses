@@ -50,14 +50,30 @@
 
     <div class="dashboard-card-container">
       <div class="dashboard-card-header">
-        <span>Ahorro Estimado</span>
+        <span>Distribución de Gastos</span>
       </div>
-      <div class="dashboard-card-body d-flex">
-        <div class="icon-container dollar-coin"></div>
-        <div class="data-container">
-          <div class="block">
-            <div class="medium-md">$3,200</div>
-            <div class="small">vs. presupuesto</div>
+      <div class="dashboard-card-body">
+        <div class="donut-chart-container">
+          <div class="donut-chart-wrapper">
+            <canvas id="expenseChart" width="200" height="200"></canvas>
+          </div>
+          <div class="chart-legend">
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #3A6BB5;"></span>
+              <span class="legend-label">Transporte (35%)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #28a745;"></span>
+              <span class="legend-label">Alojamiento (25%)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #ffc107;"></span>
+              <span class="legend-label">Comidas (20%)</span>
+            </div>
+            <div class="legend-item">
+              <span class="legend-color" style="background-color: #dc3545;"></span>
+              <span class="legend-label">Otros (20%)</span>
+            </div>
           </div>
         </div>
       </div>

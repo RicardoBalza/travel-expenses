@@ -10,6 +10,6 @@ import { AppComponent } from './app.component';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideHttpClient(),      // ? aquí
+    provideHttpClient(),      // ? aquï¿½
   ],
 };

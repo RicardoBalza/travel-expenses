@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
-import { ListsViewComponent } from './lists-view/lists-view.component';
 
 const routes: Routes = [
   { 
@@ -9,13 +8,13 @@ const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       { 
-        path: '', 
+        path: 'dashboard', 
         loadComponent: () => import('./dashboard-main/dashboard-main.component').then(c => c.DashboardMainComponent)
       },
-      { 
-        path: 'lists', 
-        component: ListsViewComponent
-      }
+      {
+        path: 'lists',
+        loadComponent: () => import('./list-renditions/list-renditions.component').then(m => m.ListRenditionsComponent)
+      },
     ]
   }
 ];
@@ -24,4 +23,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DashboardRoutingModule { }
+export class AppRoutingModule { }
