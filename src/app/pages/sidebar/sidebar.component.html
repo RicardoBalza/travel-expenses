@@ -7,7 +7,7 @@
   
   <ul class="sidebar-menu">
     <li class="menu-item active">
-      <a href="app/dashboard" class="menu-link">
+      <a [routerLink]="['/app/dashboard']" class="menu-link">
         <i class="icon dashboard-icon"></i>
         <span>Panel de Control</span>
       </a>
@@ -26,7 +26,7 @@
       </a>
       <ul class="submenu" [class.active]="activeSubmenu === 'approvals'">
         <li class="submenu-item">
-          <a href="/app/lists" class="submenu-link">
+          <a [routerLink]="['/app/lists']" class="submenu-link">
             <i class="icon request-icon"></i>
             <span>Solicitudes de Viáticos</span>
           </a>
