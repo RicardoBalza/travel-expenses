@@ -14,12 +14,12 @@ export const routes: Routes = [
     path: 'dashboard',
     loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
   },
+  { 
+    path: '', 
+    loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)
+  },
   {
     path: '**',
     redirectTo: ''
-  },
-    { 
-    path: '', 
-    loadComponent: () => import('./home/home.component').then(m => m.HomeComponent)
   },
 ];

@@ -20,187 +20,124 @@ interface SwiperConfig {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
-  currentYear: number = new Date().getFullYear();
-  private scrollTop: HTMLElement | null = null;
-  private mobileNavToggleBtn: HTMLElement | null = null;
-  private navMenuLinks: NodeListOf<HTMLAnchorElement> | null = null;
-
-  constructor() { }
+export class HomeComponent implements OnInit, OnDestroy {
+   currentYear: number = new Date().getFullYear();
+  activeTab: number = 1;
+  activeFaqItem: number = 0;
+  mobileNavOpen: boolean = false;
+  activeSection: string = 'hero';
 
   ngOnInit(): void {
-    this.initializeElements();
-    this.setupEventListeners();
-  }
-
-  ngAfterViewInit(): void {
-    this.initializeLibraries();
     this.initializeAOS();
-    this.initializeSwiper();
-    this.initializeIsotope();
+    this.initializeFAQ();
+    this.initializeMobileNav();
+    this.initializeScrollTop();
   }
 
   ngOnDestroy(): void {
-    this.removeEventListeners();
+    // Cleanup if needed
   }
 
-  private initializeElements(): void {
-    this.scrollTop = document.querySelector('.scroll-top');
-    this.mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
-    this.navMenuLinks = document.querySelectorAll('.navmenu a');
-  }
-
-  private setupEventListeners(): void {
-    // Toggle mobile navigation
-    this.mobileNavToggleBtn?.addEventListener('click', () => {
-      document.body.classList.toggle('mobile-nav-active');
-      this.mobileNavToggleBtn?.classList.toggle('bi-list');
-      this.mobileNavToggleBtn?.classList.toggle('bi-x');
-    });
-
-    // Close mobile navigation when clicking on a nav link
-    this.navMenuLinks?.forEach(link => {
-      link.addEventListener('click', () => {
-        if (document.body.classList.contains('mobile-nav-active')) {
-          document.body.classList.remove('mobile-nav-active');
-          this.mobileNavToggleBtn?.classList.toggle('bi-list');
-          this.mobileNavToggleBtn?.classList.toggle('bi-x');
-        }
-      });
-    });
-
-    // FAQ toggle
-    document.querySelectorAll('.faq-toggle').forEach(toggle => {
-      toggle.addEventListener('click', () => {
-        const item = toggle.closest('.faq-item');
-        item?.classList.toggle('faq-active');
-      });
-    });
-  }
-
-  private removeEventListeners(): void {
-    // Cleanup event listeners if needed
-  }
-
-  private initializeLibraries(): void {
-    // Initialize AOS
-    if (typeof AOS !== 'undefined') {
-      AOS.init({
-        duration: 800,
+  // Initialize AOS (Animate On Scroll) - simulated
+  private initializeAOS(): void {
+    if (typeof window !== 'undefined' && (window as any).AOS) {
+      (window as any).AOS.init({
+        duration: 1000,
         easing: 'ease-in-out',
         once: true,
-        mirror: false
-      });
-    }
-
-    // Initialize GLightbox
-    if (typeof GLightbox !== 'undefined') {
-      const lightbox = GLightbox({
-        selector: '.glightbox',
-        touchNavigation: true,
-        loop: true,
-        autoplayVideos: true
-      });
-    }
-
-    // Initialize PureCounter
-    if (typeof PureCounter !== 'undefined') {
-      new PureCounter({
-        selector: '.purecounter',
-        start: 0,
-        duration: 2000,
-        delay: 10,
-        once: true,
-        repeat: false,
-        decimals: 0,
-        legacy: true,
-        filesizing: false,
-        currency: false,
-        separator: false
+        mirror: false,
+        anchorPlacement: 'top-bottom'
       });
     }
   }
 
-  private initializeAOS(): void {
-    // AOS refresh on window resize
-    window.addEventListener('load', () => {
-      AOS.refresh();
+  // Handle tab switching for features
+  switchTab(tabNumber: number): void {
+    this.activeTab = tabNumber;
+    // Refresh AOS if available
+    if (typeof window !== 'undefined' && (window as any).AOS) {
+      setTimeout(() => {
+        (window as any).AOS.refresh();
+      }, 100);
+    }
+  }
+
+  // Initialize FAQ functionality
+  private initializeFAQ(): void {
+    // FAQ toggle will be handled by toggleFaqItem method
+  }
+
+  // Toggle FAQ items
+  toggleFaqItem(index: number): void {
+    this.activeFaqItem = this.activeFaqItem === index ? -1 : index;
+  }
+
+  // Initialize mobile navigation
+  private initializeMobileNav(): void {
+    // Mobile nav toggle will be handled by toggleMobileNav method
+  }
+
+  // Toggle mobile navigation
+  toggleMobileNav(): void {
+    this.mobileNavOpen = !this.mobileNavOpen;
+  }
+
+  // Close mobile nav when a link is clicked
+  closeMobileNav(): void {
+    this.mobileNavOpen = false;
+  }
+
+  // Initialize scroll to top button
+  private initializeScrollTop(): void {
+    window.addEventListener('scroll', () => {
+      this.handleScrollTop();
+      this.updateActiveSection();
     });
   }
 
-  private initializeSwiper(): void {
-    // Initialize Testimonials Swiper
-    if (typeof Swiper !== 'undefined') {
-      new Swiper('.testimonials-slider', {
-        speed: 600,
-        loop: true,
-        autoplay: {
-          delay: 5000,
-          disableOnInteraction: false
-        },
-        slidesPerView: 'auto',
-        pagination: {
-          el: '.swiper-pagination',
-          type: 'bullets',
-          clickable: true
-        },
-        breakpoints: {
-          320: {
-            slidesPerView: 1,
-            spaceBetween: 20
-          },
-          1200: {
-            slidesPerView: 2,
-            spaceBetween: 20
-          }
-        }
-      });
-    }
-  }
-
-  private initializeIsotope(): void {
-    // Initialize Isotope for portfolio filtering
-    if (typeof ISOTOPE !== 'undefined') {
-      const portfolioContainer = document.querySelector('.portfolio-container');
-      if (portfolioContainer) {
-        const portfolioIsotope = new ISOTOPE(portfolioContainer, {
-          itemSelector: '.portfolio-item',
-          layoutMode: 'fitRows'
-        });
-
-        const portfolioFilters = document.querySelectorAll('#portfolio-flters li');
-        portfolioFilters.forEach((filter: Element) => {
-          filter.addEventListener('click', (e: Event) => {
-            e.preventDefault();
-            portfolioFilters.forEach(el => el.classList.remove('filter-active'));
-            filter.classList.add('filter-active');
-            const filterValue = filter.getAttribute('data-filter');
-            if (filterValue) {
-              portfolioIsotope.arrange({ filter: filterValue });
-            }
-          });
-        });
+  // Handle scroll top button visibility
+  handleScrollTop(): void {
+    const scrollTop = document.getElementById('scroll-top');
+    if (scrollTop) {
+      if (window.scrollY > 100) {
+        scrollTop.classList.add('active');
+      } else {
+        scrollTop.classList.remove('active');
       }
     }
   }
 
+  // Update active section based on scroll position
+  updateActiveSection(): void {
+    const sections = ['hero', 'about', 'features', 'services', 'faq', 'contact'];
+    const scrollPosition = window.scrollY + 200;
+
+    for (const section of sections) {
+      const element = document.getElementById(section);
+      if (element) {
+        const sectionTop = element.offsetTop;
+        const sectionHeight = element.offsetHeight;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+          this.activeSection = section;
+          break;
+        }
+      }
+    }
+  }
+
+  // Scroll to top
   scrollToTop(): void {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  @HostListener('window:scroll', [])
-  onWindowScroll(): void {
-    this.toggleScrollTop();
-  }
-
-  private toggleScrollTop(): void {
-    if (window.scrollY > 100) {
-      this.scrollTop?.classList.add('active');
-    } else {
-      this.scrollTop?.classList.remove('active');
+  // Smooth scroll for anchor links
+  smoothScroll(event: Event, target: string): void {
+    event.preventDefault();
+    const element = document.querySelector(target);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      this.closeMobileNav();
     }
   }
 }
